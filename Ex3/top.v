@@ -19,12 +19,17 @@
 `timescale 1ns / 100ps
 
 module counter(
-    //Todo: add ports 
+    input clk,
+    input rst,
+    input enable,
+    input direction,
+    output reg [7:0] counter_out
 
     );
-                    
-    //Todo: add registers and wires, if needed
 
-    //Todo: add user logic
-      
+always@(posedge clk)
+	if (rst==0)
+		counter_out <= (enable==0) ? counter_out: (direction==1) ? counter_out+1: counter_out-1;
+	else
+		counter_out <= 0;
 endmodule
