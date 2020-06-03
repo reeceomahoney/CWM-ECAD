@@ -35,6 +35,8 @@ module top_tb(
 
 	//User logic
 	initial begin
+		rst = 1;
+		#10
 		rst = 0;
 		enable = 1;
 		direction = 1;
@@ -44,11 +46,7 @@ module top_tb(
     
 	//Finish test, check for success
 	initial begin
-		#50me
-		if (counter_out == 8'd5)
-			$display("Test passed!");
-		else
-			$display("Test failed!");
+		#100
 		$finish;
 	end
 	
