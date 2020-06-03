@@ -21,10 +21,9 @@ module top_tb(
 	reg rst;
 	reg enable;
 	reg direction;
-	reg [7:0] counter_out;
-
-	//Wires
 	
+	//Wires
+	wire [7:0] counter_out;	
 
 	//Clock generation
 	initial
@@ -39,18 +38,18 @@ module top_tb(
 		rst = 0;
 		enable = 1;
 		direction = 1;
-		counter_out = 8'd0;
 	end
 			
 	
     
 	//Finish test, check for success
 	initial begin
-		#50
+		#50me
 		if (counter_out == 8'd5)
 			$display("Test passed!");
 		else
 			$display("Test failed!");
+		$finish;
 	end
 	
 

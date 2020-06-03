@@ -28,8 +28,10 @@ module counter(
     );
 
 always@(posedge clk)
+begin
 	if (rst==0)
 		counter_out <= (enable==0) ? counter_out: (direction==1) ? counter_out+1: counter_out-1;
 	else
 		counter_out <= 0;
+end
 endmodule
