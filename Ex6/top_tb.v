@@ -15,7 +15,7 @@ module top_tb(
 	//Wires
 	wire [2:0] throw;
 	wire [2:0] light;
-	wire [2:0] result;	
+	wire [2:0] out;	
 
 	//Clock generation
 	initial
@@ -36,6 +36,10 @@ module top_tb(
 		#100
 		button = 0;
 		sel = 1;
+	forever begin
+		#10
+		out = mux(clk,sel,rst,button);
+	end
 	end
 
 	//Finish test
@@ -57,10 +61,12 @@ module top_tb(
 	.light (light)
 	);
 
-	mux mux (
-	.a (throw),
-	.b (light),
-	.sel (sel)
+	mux top (
+	.clk (clk),
+	.sel (sel),
+	.rst (rst),
+	.button (button),
+	.out (out)
 	);
  
 endmodule 
