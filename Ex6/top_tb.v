@@ -36,10 +36,6 @@ module top_tb(
 		#100
 		button = 0;
 		sel = 1;
-	forever begin
-		#10
-		out = mux(clk,sel,rst,button);
-	end
 	end
 
 	//Finish test
